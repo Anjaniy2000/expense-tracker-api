@@ -1,0 +1,9 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://anjaniy:SalekarAnjaniy@cluster0.rrzcvbh.mongodb.net/?retryWrites=true&w=majority
+      database: appdatabase
