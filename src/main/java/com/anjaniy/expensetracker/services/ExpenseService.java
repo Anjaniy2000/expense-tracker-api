@@ -33,4 +33,8 @@ public class ExpenseService {
     public ExpenseDto getExpenseByName(String expenseName) {
         return modelMapper.map(expenseRepository.findByExpenseName(expenseName), ExpenseDto.class);
     }
+
+    public void deleteExpense(String expenseId) {
+        expenseRepository.deleteById(expenseId);
+    }
 }

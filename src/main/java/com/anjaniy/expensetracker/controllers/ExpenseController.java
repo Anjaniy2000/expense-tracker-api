@@ -32,4 +32,10 @@ public class ExpenseController {
     public ExpenseDto addExpense(@RequestBody ExpenseDto expenseDto){
         return expenseService.addExpense(expenseDto);
     }
+
+    @DeleteMapping("/deleteExpense/{expenseId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteExpense(@PathVariable ("expenseId") String expenseId){
+        expenseService.deleteExpense(expenseId);
+    }
 }
