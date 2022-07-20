@@ -24,6 +24,9 @@ public class Expense {
     @Indexed(unique = true)
     private String expenseName;
 
+    @Field("expenseDescription")
+    private String expenseDescription;
+
     @Field("expenseCategory")
     private ExpenseCategory expenseCategory;
 

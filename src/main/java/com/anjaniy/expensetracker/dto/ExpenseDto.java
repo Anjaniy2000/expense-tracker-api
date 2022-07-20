@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 public class ExpenseDto {
     private String id;
     private String expenseName;
+    private String expenseDescription;
     private ExpenseCategory expenseCategory;
     private BigDecimal expenseAmount;
 }

@@ -21,21 +21,30 @@ public class ExpenseController {
         return expenseService.getAllExpenses();
     }
 
-    @PostMapping("/getExpenseByName/{expenseName}")
+    @GetMapping("/getExpense/{expenseId}")
     @ResponseStatus(HttpStatus.OK)
-    public ExpenseDto getExpenseByName(@PathVariable ("expenseName") String expenseName){
-        return expenseService.getExpenseByName(expenseName);
+    public ExpenseDto getExpense(@PathVariable ("expenseId") String expenseId){
+        return expenseService.getExpense(expenseId);
     }
 
     @PostMapping("/addExpense")
     @ResponseStatus(HttpStatus.CREATED)
-    public ExpenseDto addExpense(@RequestBody ExpenseDto expenseDto){
-        return expenseService.addExpense(expenseDto);
+    public String addExpense(@RequestBody ExpenseDto expenseDto){
+        expenseService.addExpense(expenseDto);
+        return "Expense Added Successfully";
+    }
+
+    @PutMapping("/updateExpense")
+    @ResponseStatus(HttpStatus.OK)
+    public String updateExpense(@RequestBody ExpenseDto expenseDto){
+        expenseService.updateExpense(expenseDto);
+        return "Expense Updated Successfully";
     }
 
     @DeleteMapping("/deleteExpense/{expenseId}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteExpense(@PathVariable ("expenseId") String expenseId){
+    public String deleteExpense(@PathVariable ("expenseId") String expenseId){
         expenseService.deleteExpense(expenseId);
+        return "Expense Deleted Successfully";
     }
 }

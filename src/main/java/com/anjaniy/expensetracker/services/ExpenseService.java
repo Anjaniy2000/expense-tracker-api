@@ -30,11 +30,15 @@ public class ExpenseService {
         return expenseDto;
     }
 
-    public ExpenseDto getExpenseByName(String expenseName) {
-        return modelMapper.map(expenseRepository.findByExpenseName(expenseName), ExpenseDto.class);
+    public ExpenseDto getExpense(String expenseId) {
+        return modelMapper.map(expenseRepository.findById(expenseId), ExpenseDto.class);
     }
 
     public void deleteExpense(String expenseId) {
         expenseRepository.deleteById(expenseId);
+    }
+
+    public ExpenseDto updateExpense(ExpenseDto expenseDto) {
+        return modelMapper.map(expenseRepository.save(modelMapper.map(expenseDto, Expense.class)), ExpenseDto.class);
     }
 }
