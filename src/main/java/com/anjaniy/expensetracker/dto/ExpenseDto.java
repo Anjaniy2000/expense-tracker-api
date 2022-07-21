@@ -1,6 +1,7 @@
 package com.anjaniy.expensetracker.dto;
 
 import com.anjaniy.expensetracker.enums.ExpenseCategory;
+import com.anjaniy.expensetracker.models.AppUser;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -16,4 +17,5 @@ public class ExpenseDto {
     private String expenseDescription;
     private ExpenseCategory expenseCategory;
     private BigDecimal expenseAmount;
+    private String userId;
 }

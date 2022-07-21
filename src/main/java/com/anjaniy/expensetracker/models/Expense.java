@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -39,8 +40,8 @@ public class Expense {
     @NotBlank(message = "Expense Amount Is Required!")
     private BigDecimal expenseAmount;
 
-    @Field("user")
-    @NotNull
-    private AppUser appUser;
+    @Field("userId")
+    @NotBlank
+    private String userId;
 
 }

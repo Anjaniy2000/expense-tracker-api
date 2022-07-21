@@ -6,7 +6,7 @@ public enum ExpenseCategory {
     RESTAURANT,
     RENTS,
     PERSONAL_CARE,
-    TRANSPORTAIONS,
+    TRANSPORTATIONS,
     DONATIONS,
     HEALTHCARE,
     UTILITIES,

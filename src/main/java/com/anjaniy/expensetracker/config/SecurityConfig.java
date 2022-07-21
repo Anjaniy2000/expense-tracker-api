@@ -1,4 +1,4 @@
-package com.anjaniy.expensetracker;
+package com.anjaniy.expensetracker.config;
 
 import com.anjaniy.expensetracker.security.JwtAuthenticationFilter;
 import com.anjaniy.expensetracker.services.UserDetailsServiceImpl;
@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    private static final String[] WHITELIST_ENDPOINTS = {"/auth/**"};
+    private static final String[] WHITELIST_ENDPOINTS = {"/auth/**", "/expenseCategory/**"};
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
