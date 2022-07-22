@@ -1,6 +1,5 @@
 package com.anjaniy.expensetracker;
 
-import com.anjaniy.expensetracker.enums.ExpenseCategory;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
