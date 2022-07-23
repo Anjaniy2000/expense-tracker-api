@@ -31,4 +31,7 @@ public class AppUser {
     @Field("password")
     @NotBlank(message = "Password Is Required!")
     private String password;
+
+    @Field("salary")
+    private int salary;
 }

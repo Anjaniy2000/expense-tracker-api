@@ -4,6 +4,7 @@ import com.anjaniy.expensetracker.dto.AppUserDto;
 import com.anjaniy.expensetracker.exceptions.UserNotFoundException;
 import com.anjaniy.expensetracker.models.AppUser;
 import com.anjaniy.expensetracker.repositories.AppUserRepository;
+import com.anjaniy.expensetracker.repositories.ExpenseRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,12 +22,22 @@ public class AppUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private ExpenseRepository expenseRepository;
+
     public AppUserDto getCurrentUser() {
         org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         AppUser appUser = appUserRepository.findByEmail(user.getUsername())
                 .orElseThrow(() -> new UserNotFoundException("User Not Found With The Given Email Address:- " + user.getUsername()));
 
         return modelMapper.map(appUser, AppUserDto.class);
+    }
+
+    public void reset() {
+        AppUser appUser = modelMapper.map(getCurrentUser(), AppUser.class);
+        appUser.setSalary(0);
+        expenseRepository.deleteByUserId(appUser.getId());
+        appUserRepository.save(appUser);
     }
 
 
@@ -47,4 +58,6 @@ public class AppUserService {
 //            throw new PasswordExceptions("Given Old Password Is Incorrect!");
 //        }
 //    }
+
+
 }

@@ -6,11 +6,13 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface ExpenseRepository extends MongoRepository<Expense, String> {
 
     @Query("{'userId': ?0}")
     List<Expense> findByUserId(String userId);
+
+    @Query(value = "{'userId': ?0}", delete = true)
+    void deleteByUserId(String userId);
 }
